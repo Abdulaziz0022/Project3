@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blogs</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#3490dc",
+              secondary: "#f1c40f",
+              danger: "#e74c3c",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+
+  <body
+    class="bg-gray-100 dark:bg-gray-900 flex flex-col items-center min-h-screen"
+  >
+    <nav class="w-full bg-primary text-white dark:bg-gray-700 shadow-md p-4">
+      <div class="container mx-auto flex justify-between items-center">
+        <a href="./index.html">
+          <img
+            src="https://f1rstmotors.com/_next/static/media/logo-dark.d8054a81.svg"
+            alt="Logo"
+            class="h-8 sm:h-10"
+          />
+        </a>
+
+            <div
+              id="nav-links"
+              class="hidden lg:flex gap-4 text-sm sm:text-base"
+            >
+              <a href="../index.html" class="hover:underline">Register</a>
+              <a href="./addblog.html" class="hover:underline">Add Blog</a>
+              <a href="#" class="hover:underline">Contact</a>
+            </div>
+
+            <div class="lg:hidden pt-2">
+              <button id="menu-toggle" class="text-xl">
+                <i class="fa-solid fa-bars pt-2"></i>
+              </button>
+            </div>
+          </div>
+
+          <div
+            id="mobile-menu"
+            class="hidden gap-3 p-4 bg-gray-800 text-white flex flex-row justify-between mt-4"
+          >
+            <a href="../index.html" class="hover:underline">Register</a>
+            <a href="./addblog.html" class="hover:underline">Add Blog</a>
+            <a href="#" class="hover:underline">Contact</a>
+          </div>
+        </nav>
+
+      </div>
+    </nav>
+
+    <div class="container mx-auto px-3 py-6">
+      <h2
+        class="text-2xl sm:text-3xl font-semibold text-center text-grayz-900 dark:text-white mb-4"
+      >
+        Latest Blogs
+      </h2>
+      <div
+        id="blog-container"
+        class="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
+      ></div>
+    </div>
+
+    <button
+      id="theme-toggle"
+      class="fixed bottom-4 right-4 p-2 bg-gray-200 dark:bg-gray-800 rounded-full shadow-lg text-lg sm:text-xl"
+    >
+      ☀️
+    </button>
+
+    <script>
+      const themeToggleButton = document.getElementById("theme-toggle");
+      const htmlElement = document.documentElement;
+
+      if (localStorage.getItem("theme") === "dark") {
+        htmlElement.classList.add("dark");
+        themeToggleButton.textContent = "🌙";
+      } else {
+        themeToggleButton.textContent = "☀️";
+      }
+
+      themeToggleButton.addEventListener("click", () => {
+        htmlElement.classList.toggle("dark");
+        localStorage.setItem(
+          "theme",
+          htmlElement.classList.contains("dark") ? "dark" : "light"
+        );
+        themeToggleButton.textContent = htmlElement.classList.contains("dark")
+          ? "🌙"
+          : "☀️";
+      });
+    </script>
+    <script>
+      document
+        .getElementById("menu-toggle")
+        .addEventListener("click", function () {
+          document.getElementById("mobile-menu").classList.toggle("hidden");
+        });
+    </script>
+    <script src="../Javascript/blog.js"></script>
+  </body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#3490dc",
+              secondary: "#f1c40f",
+              danger: "#e74c3c",
+            },
+          },
+        },
+      };
+    </script>
+    <title>Blog Details</title>
+  </head>
+
+  <body
+    class="font-sans bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-white transition-all"
+  >
+    <div class="container w-10/12 mx-auto py-6">
+      <h2 class="text-2xl font-bold">More Info</h2>
+      <img
+        src=""
+        alt="Blog Image"
+        id="blog_image"
+        class="w-full rounded-lg shadow-md my-4"
+      />
+      <h1 id="title" class="text-3xl font-semibold mb-4"></h1>
+
+      <section>
+        <p class="text-lg font-medium">Comments</p>
+        <div class="mt-4">
+          <textarea
+            id="comment"
+            class="w-full border rounded-lg p-2 dark:bg-gray-800 dark:border-gray-600 dark:text-white"
+            placeholder="Write comment..."
+          ></textarea>
+          <button
+            onclick="addComment()"
+            class="border rounded-lg bg-primary text-white px-4 py-2 mt-2 hover:bg-blue-600 transition-all"
+          >
+            Send Comment
+          </button>
+        </div>
+      </section>
+    </div>
+
+    <button
+      id="theme-toggle"
+      class="fixed bottom-4 right-4 p-3 bg-gray-200 dark:bg-gray-800 rounded-full shadow-lg text-xl transition-all"
+    >
+      ☀️
+    </button>
+
+    <script>
+      const themeToggleButton = document.getElementById("theme-toggle");
+      const htmlElement = document.documentElement;
+
+      if (localStorage.getItem("theme") === "dark") {
+        htmlElement.classList.add("dark");
+        themeToggleButton.textContent = "🌙";
+      } else {
+        themeToggleButton.textContent = "☀️";
+      }
+
+      themeToggleButton.addEventListener("click", () => {
+        htmlElement.classList.toggle("dark");
+        if (htmlElement.classList.contains("dark")) {
+          themeToggleButton.textContent = "🌙";
+          localStorage.setItem("theme", "dark");
+        } else {
+          themeToggleButton.textContent = "☀️";
+          localStorage.setItem("theme", "light");
+        }
+      });
+    </script>
+
+    <script src="../Javascript/info.js"></script>
+  </body>
+</html>
